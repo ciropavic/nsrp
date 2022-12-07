@@ -1,8 +1,9 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 local housePlants = {}
 local insideHouse = false
-local currentHouse = nil
+local currentHouse = -1
 local plantSpawned = false
+
 
 DrawText3Ds = function(x, y, z, text)
 	SetTextScale(0.35, 0.35)
@@ -18,6 +19,12 @@ DrawText3Ds = function(x, y, z, text)
     DrawRect(0.0, 0.0+0.0125, 0.017+ factor, 0.03, 0, 0, 0, 75)
     ClearDrawOrigin()
 end
+
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded')
+AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
+    Wait(3000)
+    TriggerEvent('qb-weed:client:refreshHousePlants', -1)
+end)
 
 RegisterNetEvent('qb-weed:client:getHousePlants', function(house)
     QBCore.Functions.TriggerCallback('qb-weed:server:getBuildingPlants', function(plants)
@@ -74,13 +81,14 @@ local ClosestTarget = 0
 CreateThread(function()
     while true do
         Wait(0)
-        if insideHouse then
+        local count = 0
+        --if insideHouse then
             if plantSpawned then
                 local ped = PlayerPedId()
                 for k, _ in pairs(housePlants[currentHouse]) do
                     local gender = "M"
                     if housePlants[currentHouse][k].gender == "woman" then gender = "F" end
-
+                    --print(count)
                     local plantData = {
                         ["plantCoords"] = {["x"] = json.decode(housePlants[currentHouse][k].coords).x, ["y"] = json.decode(housePlants[currentHouse][k].coords).y, ["z"] = json.decode(housePlants[currentHouse][k].coords).z},
                         ["plantStage"] = housePlants[currentHouse][k].stage,
@@ -100,10 +108,9 @@ CreateThread(function()
                         }
                     }
 
-                    local plyDistance = #(GetEntityCoords(ped) - vector3(plantData["plantCoords"]["x"], plantData["plantCoords"]["y"], plantData["plantCoords"]["z"]))
+                    local plyDistance = #(GetEntityCoords(PlayerPedId()) - vector3(plantData["plantCoords"]["x"], plantData["plantCoords"]["y"], plantData["plantCoords"]["z"]))
 
                     if plyDistance < 0.8 then
-
                         ClosestTarget = k
                         if plantData["plantStats"]["health"] > 0 then
                             if plantData["plantStage"] ~= plantData["plantStats"]["highestStage"] then
@@ -155,14 +162,20 @@ CreateThread(function()
                                 end)
                             end
                         end
+                    else
+                        count = count + 1
+                    end
+
+                    if count == #housePlants[currentHouse] then
+                        Wait(1000)
                     end
                 end
             end
-        end
+        --end
 
-        if not insideHouse then
-            Wait(5000)
-        end
+        -- if not insideHouse then
+        --     Wait(5000)
+        -- end
     end
 end)
 
@@ -172,13 +185,13 @@ RegisterNetEvent('qb-weed:client:leaveHouse', function()
         if currentHouse ~= nil then
             insideHouse = false
             housePlants[currentHouse] = nil
-            currentHouse = nil
+            currentHouse = -1
         end
     end)
 end)
 
 RegisterNetEvent('qb-weed:client:refreshHousePlants', function(house)
-    if currentHouse ~= nil and currentHouse == house then
+    -- if currentHouse ~= nil and currentHouse == house then
         despawnHousePlants()
         SetTimeout(100, function()
             QBCore.Functions.TriggerCallback('qb-weed:server:getBuildingPlants', function(plants)
@@ -187,7 +200,7 @@ RegisterNetEvent('qb-weed:client:refreshHousePlants', function(house)
                 spawnHousePlants()
             end, house)
         end)
-    end
+    -- end
 end)
 
 RegisterNetEvent('qb-weed:client:refreshPlantStats', function()
@@ -217,7 +230,7 @@ RegisterNetEvent('qb-weed:client:placePlant', function(type, item)
         end
     end
 
-    if currentHouse ~= nil then
+    -- if currentHouse ~= nil then
         if ClosestPlant == 0 then
 	LocalPlayer.state:set("inv_busy", true, true)
             QBCore.Functions.Progressbar("plant_weed_plant", Lang:t('text.planting'), 8000, false, true, {
@@ -232,7 +245,7 @@ RegisterNetEvent('qb-weed:client:placePlant', function(type, item)
 		LocalPlayer.state:set("inv_busy", false, true)
             }, {}, {}, function() -- Done
                 ClearPedTasks(ped)
-                TriggerServerEvent('qb-weed:server:placePlant', json.encode(plantData["plantCoords"]), type, currentHouse)
+                TriggerServerEvent('qb-weed:server:placePlant', json.encode(plantData["plantCoords"]), type, -1)
                 TriggerServerEvent('qb-weed:server:removeSeed', item.slot, type)
             end, function() -- Cancel
                 ClearPedTasks(ped)
@@ -242,13 +255,13 @@ RegisterNetEvent('qb-weed:client:placePlant', function(type, item)
         else
             QBCore.Functions.Notify(Lang:t('error.cant_place_here'), 'error', 3500)
         end
-    else
-        QBCore.Functions.Notify(Lang:t('error.not_safe_here'), 'error', 3500)
-    end
+    -- else
+    --     QBCore.Functions.Notify(Lang:t('error.not_safe_here'), 'error', 3500)
+    -- end
 end)
 
 RegisterNetEvent('qb-weed:client:foodPlant', function()
-    if currentHouse ~= nil then
+    -- if currentHouse ~= nil then
         if ClosestTarget ~= 0 then
             local ped = PlayerPedId()
             local gender = "M"
@@ -295,7 +308,7 @@ RegisterNetEvent('qb-weed:client:foodPlant', function()
                     }, {}, {}, function() -- Done
                         ClearPedTasks(ped)
                         local newFood = math.random(40, 60)
-                        TriggerServerEvent('qb-weed:server:foodPlant', currentHouse, newFood, plantData["plantSort"]["name"], plantData["plantStats"]["plantId"])
+                        TriggerServerEvent('qb-weed:server:foodPlant', -1, newFood, plantData["plantSort"]["name"], plantData["plantStats"]["plantId"])
                     end, function() -- Cancel
                         ClearPedTasks(ped)
 			            LocalPlayer.state:set("inv_busy", false, true)
@@ -308,5 +321,5 @@ RegisterNetEvent('qb-weed:client:foodPlant', function()
         else
             QBCore.Functions.Notify(Lang:t('error.cant_place_here'), "error")
         end
-    end
+    -- end
 end)
