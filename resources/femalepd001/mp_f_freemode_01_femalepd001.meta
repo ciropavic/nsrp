@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ShopPedApparel>
+	<pedName>mp_f_freemode_01</pedName>
+	<dlcName>femalepd001</dlcName>
+	<fullDlcName>mp_f_freemode_01_femalepd001</fullDlcName>
+	<eCharacter>SCR_CHAR_MULTIPLAYER_F</eCharacter>
+	<creatureMetaData>MP_Creaturemetadata_femalepd001</creatureMetaData>
+
+	<pedOutfits>
+	</pedOutfits>
+	<pedComponents>
+	</pedComponents>
+	<pedProps>
+	</pedProps>
+
+</ShopPedApparel>
+
