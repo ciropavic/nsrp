@@ -1,0 +1,7 @@
+This is a resource that can be used with your FiveM server.
+
+- Create a "resources" folder in your server data root if you do not have one already.
+- Add the "mbmaps" folder to your "resources" folder
+- Place .ymap files in this location (ex: mbmaps/stream/example.ymap)
+
+- Restart Server and Enjoy!
