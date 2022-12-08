@@ -19,28 +19,91 @@ QBShared.Jobs = {
 		offDutyPay = false,
 		grades = {
             ['0'] = {
-                name = 'Recruit',
-                payment = 50
+                name = 'LSPD - Academy',
+                payment = 250
             },
 			['1'] = {
-                name = 'Officer',
-                payment = 75
+                name = 'LSPD - Phase 3',
+                payment = 500
             },
 			['2'] = {
-                name = 'Sergeant',
-                payment = 100
+                name = 'LSPD - Officer',
+                payment = 750
             },
 			['3'] = {
-                name = 'Lieutenant',
-                payment = 125
+                name = 'LSPD - Senior Officer',
+                payment = 1000
             },
 			['4'] = {
-                name = 'Chief',
-				isboss = true,
-                payment = 150
+                name = 'LSPD - Commander',
+                payment = 1250
+            },
+            ['5'] = {
+                name = 'LSPD - Assistant Chief',
+                isboss = true,
+                payment = 1750
+            },
+            ['6'] = {
+                name = 'LSPD - Chief of Police',
+                isboss = true,
+                payment = 2000
+            },
+            -- BCSO DEPT
+            ['7'] = {
+                name = 'BCSO - Deputy',
+                payment = 1250
+            },
+            ['8'] = {
+                name = 'BCSO - Captain',
+                payment = 1500
+            },
+            ['9'] = {
+                name = 'BCSO - Chief Deputy',
+                payment = 1650
+            },
+            ['10'] = {
+                name = 'BCSO - Undersheirff',
+                isboss = true,
+                payment = 1750
+            },
+            ['11'] = {
+                name = 'BCSO - Sheriff',
+                isboss = true,
+                payment = 2000
+            },
+            -- California Highway Patrol
+            ['12'] = {
+                name = 'CHP - Park Ranger',
+                payment = 1750
+            },
+            ['13'] = {
+                name = 'CHP - Highway Patrol',
+                payment = 1900
+            },
+            ['14'] = {
+                name = 'CHP - Trooper',
+                payment = 2250
+            },
+            ['15'] = {
+                name = 'CHP - State Guard',
+                isboss = true,
+                payment = 2500
+            },
+            ['16'] = {
+                name = 'CHP - Commissioner',
+                isboss = true,
+                payment = 3000
+            },
+        -- Undercover Agent
+            ['17'] = {
+                name = 'UCA - Agent',
+                payment = 4000
+            },
+            ['18'] = {
+                name = 'UCA - Military',
+                payment = 4000
             },
         },
-	},
 	['ambulance'] = {
 		label = 'EMS',
 		defaultDuty = true,
