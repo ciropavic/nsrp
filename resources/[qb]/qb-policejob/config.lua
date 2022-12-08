@@ -12,43 +12,64 @@ Config.MaxSpikes = 5
 
 Config.HandCuffItem = 'handcuffs'
 
-Config.LicenseRank = 2
+Config.LicenseRank = 4
 
 Config.UseTarget = GetConvar('UseTarget', 'false') == 'true'
 Config.Locations = {
     ["duty"] = {
-        [1] = vector3(440.085, -974.924, 30.689),
-        [2] = vector3(-449.811, 6012.909, 31.815),
+        --Los Santos Police Dept
+        [1] = vector3(442.68, -981.88, 30.69), -- Front Desk Clipboard
+        
+        -- Blaine County Sheriff's Office
+        [2] = vector3(-450.12, 6010.6, 31.72), -- GREEN FOLDER
+        --California Highway Patrol
     },
     ["vehicle"] = {
-        [1] = vector4(448.159, -1017.41, 28.562, 90.654),
-        [2] = vector4(471.13, -1024.05, 28.17, 274.5),
-        [3] = vector4(-455.39, 6002.02, 31.34, 87.93),
-    },
+        -- LSPD
+        [1] = vector4(449.25, -981.27, 43.69, 83.82), -- Heli 
+        [2] = vector4(470.15, -1024.55, 28.2, 264.61), -- Outside Back
+        [3] = vector4(458.9, -993.45, 25.7, 358.53),
+        [4] = vector4(436.49, -975.93, 25.31, 89.24),
+        [5] = vector4(450.35, -976.1, 25.31, 89.39),
+
+        --BCSO
+        [6] = vector4(-463.35, 6009.98, 31.34, 89.59), -- BACK
+        [7] = vector4(-475.02, 5989.06, 31.34, 131.9), -- HELI
+        [8] = vector4(-442.2, 6027.47, 31.34, 37.9), --FRONT
+        --CHP
+        },
     ["stash"] = {
-        [1] = vector3(453.075, -980.124, 30.889),
+        --BCSO
+        [1] = vector3(-440.19, 5996.64, 31.72),
     },
     ["impound"] = {
         [1] = vector3(436.68, -1007.42, 27.32),
         [2] = vector3(-436.14, 5982.63, 31.34),
     },
     ["helicopter"] = {
-        [1] = vector4(449.168, -981.325, 43.691, 87.234),
-        [2] = vector4(-475.43, 5988.353, 31.716, 31.34),
     },
     ["armory"] = {
-        [1] = vector3(462.23, -981.12, 30.68),
+        [1] = vector3(482.56, -995.21, 30.69),
+        [2] = vector3(484.63, -995.31, 30.69),
+        -- BCSO
+        [3] = vector3(-437.38, 5988.73, 31.72),
     },
     ["trash"] = {
         [1] = vector3(439.0907, -976.746, 30.776),
     },
     ["fingerprint"] = {
-        [1] = vector3(460.9667, -989.180, 24.92),
+        [1] = vector3(483.82, -987.93, 30.69),
+        -- BCSO 
+        [2] = vector3(-439.88, 5992.02, 31.72),
+
     },
     ["evidence"] = {
-        [1] = vector3(442.1722, -996.067, 30.689),
-        [2] = vector3(451.7031, -973.232, 30.689),
-        [3] = vector3(455.1456, -985.462, 30.689),
+        [1] = vector3(446.85, -996.98, 30.69),
+        [2] = vector3(449.92, -996.11, 30.69),
+        [3] = vector3(474.58, -994.84, 26.27),
+        [4] = vector3(472.63, -996.26, 26.27),
+        -- BCSO
+        [5] = vector3(-442.29, 5987.22, 31.72),
     },
     ["stations"] = {
         [1] = {label = "Police Station", coords = vector4(428.23, -984.28, 29.76, 3.5)},
@@ -102,63 +123,175 @@ Config.SecurityCameras = {
 }
 
 Config.AuthorizedVehicles = {
-	-- Grade 0
-	[0] = {
-		["police"] = "Police Car 1",
-		["police2"] = "Police Car 2",
-		["police3"] = "Police Car 3",
-		["police4"] = "Police Car 4",
-		["policeb"] = "Police Car 5",
-		["policet"] = "Police Car 6",
-		["sheriff"] = "Sheriff Car 1",
-		["sheriff2"] = "Sheriff Car 2",
-	},
-	-- Grade 1
+	-- LSPD
+    -- Academy (NO CAR)
+    -- Phase 3
 	[1] = {
-		["police"] = "Police Car 1",
-		["police2"] = "Police Car 2",
-		["police3"] = "Police Car 3",
-		["police4"] = "Police Car 4",
-		["policeb"] = "Police Car 5",
-		["policet"] = "Police Car 6",
-		["sheriff"] = "Sheriff Car 1",
-		["sheriff2"] = "Sheriff Car 2",
+		["police"] = "LSPD Crown Victoria",
+	},
+    -- Officer
+    [2] = {
+        ["police"] = "LSPD Crown Victoria",
+        ["police2"] = "LSPD 2010 Dodge Charger",
+    },
+    -- Senior Officer
+    [3] = {
+        ["police"] = "LSPD Crown Victoria",
+        ["police2"] = "LSPD 2010 Dodge Charger",
+        ["police3"] = "LSPD 2019 Dodge Charger",
+        ["policeb"] = "LSPD Bike",
+        ["policet"] = "LSPD Van",
+        ["pbus"] = "Prison Bus",
+    },
+    -- Commander
+    [4] = { 
+        ["polmav"] = "Police Air",
+        ["police"] = "LSPD Crown Victoria",
+        ["police2"] = "LSPD 2010 Dodge Charger",
+        ["police3"] = "LSPD 2019 Dodge Charger",
+        ["police4"] = "Unmarked Crown Victoria",
+        ["policeb"] = "LSPD Bike",
+        ["policet"] = "LSPD Van",
+        ["pbus"] = "Prison Bus",
+    },
+    -- Assistant Cheif + Chief
+    [5] = { 
+        ["polmav"] = "Police Air",
+        ["police"] = "LSPD Crown Victoria",
+        ["police2"] = "LSPD 2010 Dodge Charger",
+        ["police3"] = "LSPD 2019 Dodge Charger",
+        ["police4"] = "Unmarked Crown Victoria",
+        ["policeb"] = "LSPD Bike",
+        ["policet"] = "LSPD Van",
+        ["pbus"] = "Prison Bus",
+        ["ucg20"] = "Unmarked Interceptor",
+    },
+    [6] = { 
+        ["polmav"] = "Police Air",
+        ["police"] = "LSPD Crown Victoria",
+        ["police2"] = "LSPD 2010 Dodge Charger",
+        ["police3"] = "LSPD 2019 Dodge Charger",
+        ["police4"] = "Unmarked Crown Victoria",
+        ["policeb"] = "LSPD Bike",
+        ["policet"] = "LSPD Van",
+        ["pbus"] = "Prison Bus",
+        ["ucg20"] = "Unmarked Interceptor",
+        ["riot"] = "R.I.O.T. Vehicle",
+        ["mcc"] = "Mobile Command Center",
+    },
+    -- BCSO
+    -- Deputy
+    [7] = {
+        ["polstanierr"] = "BCSO Crown Victoria",
+        ["poltorencer"] = "BCSO Charger",
+        ["polscoutr"] = "BCSO Tahoe",
+        ["polbisonr"] = "BCSO Bison 4x4",
+    },
+    -- Captain
+    [8] = {
+        ["polstanierr"] = "BCSO Crown Victoria",
+        ["poltorencer"] = "BCSO Charger",
+        ["polscoutr"] = "BCSO Tahoe",
+        ["polbisonr"] = "BCSO Bison 4x4",      
+        ["]polbuffalor"] = "BCSO Buffalo",
+        ["polcoquetter"] = "BCSO Chevy Camaro",
+        ["polspeedor"] = "BCSO Van",
+        ["polstalkerr"] = "BCSO Landstalker",
+    },
+    -- Chief Deputy
+    [9] = {
+        ["as332"] = "BCSO Air - Search & Rescue",
+        ["polmav"] = "Police Air",
+        ["polstanierr"] = "BCSO Crown Victoria",
+        ["poltorencer"] = "BCSO Charger",
+        ["polscoutr"] = "BCSO Tahoe",
+        ["polbisonr"] = "BCSO Bison 4x4",      
+        ["]polbuffalor"] = "BCSO Buffalo",
+        ["polcoquetter"] = "BCSO Chevy Camaro",
+        ["polspeedor"] = "BCSO Van",
+        ["polstalkerr"] = "BCSO Landstalker",
+        ["poldmntr"] = "BCSO Dominator",
+        ["umdemon"] = "Unmarked Crown Victoria",
+    },
+    --Sheriffs
+    [10] = {
+        ["as332"] = "BCSO Air - Search & Rescue",
+        ["polmav"] = "Police Air",
+        ["polstanierr"] = "BCSO Crown Victoria",
+        ["poltorencer"] = "BCSO Charger",
+        ["polscoutr"] = "BCSO Tahoe",
+        ["polbisonr"] = "BCSO Bison 4x4",      
+        ["]polbuffalor"] = "BCSO Buffalo",
+        ["polcoquetter"] = "BCSO Chevy Camaro",
+        ["polspeedor"] = "BCSO Van",
+        ["polstalkerr"] = "BCSO Landstalker",
+        ["poldmntr"] = "BCSO Dominator",
+        ["umdemon"] = "Unmarked Crown Victoria",
+        ["zr1rb"] = "Sheriff's Interceptor",
+    },
+    [11] = {
+        ["as332"] = "BCSO Air - Search & Rescue",
+        ["polmav"] = "Police Air",
+        ["polstanierr"] = "BCSO Crown Victoria",
+        ["poltorencer"] = "BCSO Charger",
+        ["polscoutr"] = "BCSO Tahoe",
+        ["polbisonr"] = "BCSO Bison 4x4",      
+        ["]polbuffalor"] = "BCSO Buffalo",
+        ["polcoquetter"] = "BCSO Chevy Camaro",
+        ["polspeedor"] = "BCSO Van",
+        ["polstalkerr"] = "BCSO Landstalker",
+        ["poldmntr"] = "BCSO Dominator",
+        ["umdemon"] = "Unmarked Crown Victoria",
+        ["zr1rb"] = "Sheriff's Interceptor",
+        ["riot"] = "R.I.O.T. Vehicle",
+        ["mcc"] = "Mobile Command Center",
+    },
+    -- CHP
+    --Park Ranger
+    [12] = {
+        ["nf9"] = "CHP Sierra",
+        ["nf1"] = "CHP 2010 Charger",
+        ["nf2"] = "CHP 2014 Charger",
+        ["nf4"] = "CHP Durango",
+    },
+    [13] = {
+        ["nf9"] = "CHP Sierra",
+        ["nf1"] = "CHP 2010 Charger",
+        ["nf2"] = "CHP 2014 Charger",
+        ["nf4"] = "CHP Durango",
+        ["nf3"] = "CHP 2019 Charger",
+        ["hwayb"] = "CHP Bike",
+    },
+    [14] = {
+        ["nf9"] = "CHP Sierra",
+        ["nf1"] = "CHP 2010 Charger",
+        ["nf2"] = "CHP 2014 Charger",
+        ["nf4"] = "CHP Durango",
+    },
+    [15] = {
+        ["nf9"] = "CHP Sierra",
+        ["nf1"] = "CHP 2010 Charger",
+        ["nf2"] = "CHP 2014 Charger",
+        ["nf4"] = "CHP Durango",
+    },
+    [16] = {
+        ["nf9"] = "CHP Sierra",
+        ["nf1"] = "CHP 2010 Charger",
+        ["nf2"] = "CHP 2014 Charger",
+        ["nf4"] = "CHP Durango",
+    },
+	--[[
+       2020 Ford Explorer - NF5
 
-	},
-	-- Grade 2
-	[2] = {
-		["police"] = "Police Car 1",
-		["police2"] = "Police Car 2",
-		["police3"] = "Police Car 3",
-		["police4"] = "Police Car 4",
-		["policeb"] = "Police Car 5",
-		["policet"] = "Police Car 6",
-		["sheriff"] = "Sheriff Car 1",
-		["sheriff2"] = "Sheriff Car 2",
-	},
-	-- Grade 3
-	[3] = {
-		["police"] = "Police Car 1",
-		["police2"] = "Police Car 2",
-		["police3"] = "Police Car 3",
-		["police4"] = "Police Car 4",
-		["policeb"] = "Police Car 5",
-		["policet"] = "Police Car 6",
-		["sheriff"] = "Sheriff Car 1",
-		["sheriff2"] = "Sheriff Car 2",
-	},
-	-- Grade 4
-	[4] = {
-		["police"] = "Police Car 1",
-		["police2"] = "Police Car 2",
-		["police3"] = "Police Car 3",
-		["police4"] = "Police Car 4",
-		["policeb"] = "Police Car 5",
-		["policet"] = "Police Car 6",
-		["sheriff"] = "Sheriff Car 1",
-		["sheriff2"] = "Sheriff Car 2",
-        ["nf3"] = "NF3"
-	}
+        2016 Chevy Camaro - NF6
+
+        2020 Jeep Wrangler - NF7
+
+        2017 Chevy Colorado - NF8
+        2019 Ford F-350 - NF10
+        swathel = S.W.A.T. Air
+        sp1 = State Police
+    ]]
 }
 
 Config.WhitelistedVehicles = {}
@@ -208,6 +341,48 @@ Config.CarItems = {
         type = "item",
         slot = 3,
     },
+    [4] = {
+        name = "tunerlaptop",
+        amount = 1,
+        info = {},
+        type = "item",
+        slot = 4,
+    },
+    [5] = {
+        name = "diving_gear",
+        amount = 1,
+        info = {},
+        type = "item",
+        slot = 5,
+    },
+    [6] = {
+        name = "harness",
+        amount = 2,
+        info = {},
+        type = "item",
+        slot = 6,
+    },
+    [7] = {
+        name = "jerry_can",
+        amount = 1,
+        info = {},
+        type = "item",
+        slot = 7,
+    },
+    [8] = {
+        name = "nitrous",
+        amount = 10,
+        info = {},
+        type = "item",
+        slot = 8,
+    },
+    [9] = {
+        name = "repairkit",
+        amount = 3,
+        info = {},
+        type = "item",
+        slot = 9,
+    },
 }
 
 Config.Items = {
@@ -226,7 +401,7 @@ Config.Items = {
             },
             type = "weapon",
             slot = 1,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
         },
         [2] = {
             name = "weapon_stungun",
@@ -237,7 +412,7 @@ Config.Items = {
             },
             type = "weapon",
             slot = 2,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
         },
         [3] = {
             name = "weapon_pumpshotgun",
@@ -251,7 +426,7 @@ Config.Items = {
             },
             type = "weapon",
             slot = 3,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
         },
         [4] = {
             name = "weapon_smg",
@@ -266,7 +441,7 @@ Config.Items = {
             },
             type = "weapon",
             slot = 4,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
         },
         [5] = {
             name = "weapon_carbinerifle",
@@ -281,7 +456,7 @@ Config.Items = {
             },
             type = "weapon",
             slot = 5,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
         },
         [6] = {
             name = "weapon_nightstick",
@@ -290,7 +465,7 @@ Config.Items = {
             info = {},
             type = "weapon",
             slot = 6,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
         },
         [7] = {
             name = "pistol_ammo",
@@ -299,7 +474,7 @@ Config.Items = {
             info = {},
             type = "item",
             slot = 7,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
         },
         [8] = {
             name = "smg_ammo",
@@ -308,7 +483,7 @@ Config.Items = {
             info = {},
             type = "item",
             slot = 8,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
         },
         [9] = {
             name = "shotgun_ammo",
@@ -317,7 +492,7 @@ Config.Items = {
             info = {},
             type = "item",
             slot = 9,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
         },
         [10] = {
             name = "rifle_ammo",
@@ -326,7 +501,7 @@ Config.Items = {
             info = {},
             type = "item",
             slot = 10,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
         },
         [11] = {
             name = "handcuffs",
@@ -335,7 +510,7 @@ Config.Items = {
             info = {},
             type = "item",
             slot = 11,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
         },
         [12] = {
             name = "weapon_flashlight",
@@ -344,7 +519,7 @@ Config.Items = {
             info = {},
             type = "weapon",
             slot = 12,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
         },
         [13] = {
             name = "empty_evidence_bag",
@@ -353,7 +528,7 @@ Config.Items = {
             info = {},
             type = "item",
             slot = 13,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
         },
         [14] = {
             name = "police_stormram",
@@ -362,7 +537,7 @@ Config.Items = {
             info = {},
             type = "item",
             slot = 14,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
         },
         [15] = {
             name = "armor",
@@ -371,7 +546,7 @@ Config.Items = {
             info = {},
             type = "item",
             slot = 15,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
         },
         [16] = {
             name = "radio",
@@ -380,7 +555,7 @@ Config.Items = {
             info = {},
             type = "item",
             slot = 16,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
         },
         [17] = {
             name = "heavyarmor",
@@ -389,7 +564,7 @@ Config.Items = {
             info = {},
             type = "item",
             slot = 17,
-            authorizedJobGrades = {0, 1, 2, 3, 4}
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
         }
     }
 }
