@@ -1,0 +1,26 @@
+<CodeWalkerProject>
+  <Name>New CodeWalker Project</Name>
+  <Version value="1" />
+  <YmapFilenames>
+    <Item>mlo_sahputool_milo_.ymap</Item>
+    <Item>mlo_sahputool001_milo_.ymap</Item>
+    <Item>lr_cs4_02.ymap</Item>
+    <Item>lr_cs4_02_strm_7.ymap</Item>
+    <Item>lr_cs4_02_long_4.ymap</Item>
+  </YmapFilenames>
+  <YtypFilenames>
+    <Item>mlo_sahputool.ytyp</Item>
+    <Item>mlo_sahputool001.ytyp</Item>
+  </YtypFilenames>
+  <YbnFilenames>
+    <Item>mlo_sahputool001_col.ybn</Item>
+    <Item>mlo_sahputool_col.ybn</Item>
+    <Item>lr_cs4_02_35.ybn</Item>
+    <Item>lr_cs4_02_30.ybn</Item>
+  </YbnFilenames>
+  <YndFilenames />
+  <YnvFilenames />
+  <TrainsFilenames />
+  <ScenarioFilenames />
+  <AudioRelFilenames />
+</CodeWalkerProject>
