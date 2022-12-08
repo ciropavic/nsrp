@@ -117,3 +117,27 @@ QBShared.Gangs = {
         },
 	}
 }
+
+QBShared.Gangs = {
+    ['hanta'] = { -- grade name (string)
+        label = 'Hanta Clan', -- Label of the gang (string)
+        grades = {
+            ['0'] = { -- grade (number)
+                name = 'Member'
+            },
+            ['1'] = {
+                name = 'G.A.L.s' -- Label of the gang grade (string)
+            },
+            ['2'] = {
+                name = 'Scavengers'
+            },
+            ['3'] = {
+                name = 'Elders'
+            },
+            ['4'] = {
+                name = 'Lords & Ladies',
+                isboss = true
+            },
+        },
+    }
+}
