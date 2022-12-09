@@ -76,16 +76,18 @@ RegisterNetEvent('hospital:server:RespawnAtHospital', function()
 		end
 		--print("All beds were full, placing in first bed as fallback")
 
-		TriggerClientEvent('hospital:client:SendToBed', src, 1, Config.Locations["beds"][1], true)
-		TriggerClientEvent('hospital:client:SetBed', -1, 1, true)
-		if Config.WipeInventoryOnRespawn then
-			Player.Functions.ClearInventory()
-			MySQL.update('UPDATE players SET inventory = ? WHERE citizenid = ?', { json.encode({}), Player.PlayerData.citizenid })
-			TriggerClientEvent('QBCore:Notify', src, Lang:t('error.possessions_taken'), 'error')
-		end
-		Player.Functions.RemoveMoney("bank", Config.BillCost, "respawned-at-hospital")
-			exports['qb-management']:AddMoney("ambulance", Config.BillCost)
-		TriggerClientEvent('hospital:client:SendBillEmail', src, Config.BillCost)
+		-- This code shouldn't be needed. May be causing the double charge
+
+		-- TriggerClientEvent('hospital:client:SendToBed', src, 1, Config.Locations["beds"][1], true)
+		-- TriggerClientEvent('hospital:client:SetBed', -1, 1, true)
+		-- if Config.WipeInventoryOnRespawn then
+		-- 	Player.Functions.ClearInventory()
+		-- 	MySQL.update('UPDATE players SET inventory = ? WHERE citizenid = ?', { json.encode({}), Player.PlayerData.citizenid })
+		-- 	TriggerClientEvent('QBCore:Notify', src, Lang:t('error.possessions_taken'), 'error')
+		-- end
+		-- Player.Functions.RemoveMoney("bank", Config.BillCost, "respawned-at-hospital")
+		-- 	exports['qb-management']:AddMoney("ambulance", Config.BillCost)
+		-- TriggerClientEvent('hospital:client:SendBillEmail', src, Config.BillCost)
 	end
 end)
 
@@ -203,6 +205,7 @@ RegisterNetEvent('hospital:server:RevivePlayer', function(playerId, isOldMan)
 				TriggerClientEvent('QBCore:Notify', src, Lang:t('error.not_enough_money'), "error")
 			end
 		else
+			Patient.Functions.RemoveMoney("cash", Config.BillCost, "revived-player")
 			Player.Functions.RemoveItem('firstaid', 1)
 			TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['firstaid'], "remove")
 			TriggerClientEvent('hospital:client:Revive', Patient.PlayerData.source)
