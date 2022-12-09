@@ -157,6 +157,7 @@ RegisterNetEvent('hospital:server:TreatWounds', function(playerId)
 	if Patient then
 		if Player.PlayerData.job.name =="ambulance" then
 			Player.Functions.RemoveItem('bandage', 1)
+			Patient.Functions.RemoveMoney("bank", 1000, "Healed Wounds Patient Charge")
 			TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['bandage'], "remove")
 			TriggerClientEvent("hospital:client:HealInjuries", Patient.PlayerData.source, "full")
 		end
@@ -281,6 +282,12 @@ RegisterNetEvent('hospital:server:resetHungerThirst', function()
 	Player.Functions.SetMetaData('thirst', 100)
 
 	TriggerClientEvent('hud:client:UpdateNeeds', source, 100, 100)
+end)
+
+RegisterNetEvent('hospital:server:UseIfaksOther', function(target)
+
+	TriggerClientEvent("hospital:client:UseIfaks", target)
+	
 end)
 
 -- Callbacks

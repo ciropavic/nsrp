@@ -64,6 +64,23 @@ RegisterNetEvent('hospital:client:UseIfaks', function()
     end)
 end)
 
+RegisterNetEvent('hospital:client:UseIfaksOther', function()
+    local hasItem = QBCore.Functions.HasItem('ifaks')
+    if hasItem then
+        local player, distance = GetClosestPlayer()
+        if player ~= -1 and distance < 5.0 then
+            TriggerServerEvent("hospital:server:removeIfaks")
+            TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["ifaks"], "remove")
+            local playerId = GetPlayerServerId(player)
+            TriggerServerEvent('hospital:server:UseIfaksOther', playerId)
+        else
+            QBCore.Functions.Notify(Lang:t('error.no_player'), "error")
+        end
+    else
+        QBCore.Functions.Notify(Lang:t('error.no_bandage'), "error")
+    end
+end)
+
 RegisterNetEvent('hospital:client:UseBandage', function()
     local ped = PlayerPedId()
     QBCore.Functions.Progressbar("use_bandage", Lang:t('progress.bandage'), 4000, false, true, {

@@ -526,7 +526,7 @@ Config.JobInteractions = {
             title = 'IFak',
             icon = 'bandage',
             type = 'client',
-            event = 'hospital:client:UseIfaks',
+            event = 'hospital:client:UseIfaksOther',
             shouldClose = true
         }
     },
