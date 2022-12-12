@@ -784,7 +784,7 @@ RegisterCommand('hotbar', function()
     end
 end, false)
 
-RegisterKeyMapping('hotbar', Lang:t("inf_mapping.tog_slots"), 'keyboard', 'z')
+RegisterKeyMapping('hotbar', Lang:t("inf_mapping.tog_slots"), 'keyboard', 'F1')
 
 for i = 1, 6 do
     RegisterCommand('slot' .. i,function()
