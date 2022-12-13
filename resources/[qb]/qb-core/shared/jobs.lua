@@ -104,6 +104,7 @@ QBShared.Jobs = {
                 payment = 4000
             },
         },
+    },
 	['ambulance'] = {
 		label = 'EMS',
 		defaultDuty = true,
